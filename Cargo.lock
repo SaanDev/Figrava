@@ -34,7 +34,7 @@ dependencies = [
 
 [[package]]
 name = "analysis-engine"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "nalgebra",
  "rustfft",
@@ -785,7 +785,7 @@ dependencies = [
 
 [[package]]
 name = "data-engine"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "calamine",
  "csv",
@@ -2796,7 +2796,7 @@ dependencies = [
 
 [[package]]
 name = "plot-model"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "scientific-core",
  "serde",
@@ -2967,7 +2967,7 @@ dependencies = [
 
 [[package]]
 name = "project-engine"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "analysis-engine",
  "chrono",
@@ -3352,7 +3352,7 @@ dependencies = [
 
 [[package]]
 name = "scientific-core"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "serde",
  "serde_json",
@@ -3362,7 +3362,7 @@ dependencies = [
 
 [[package]]
 name = "scientific-plot-studio"
-version = "0.1.0"
+version = "1.0.0"
 dependencies = [
  "analysis-engine",
  "data-engine",

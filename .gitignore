@@ -27,10 +27,11 @@ target/
 **/*.rs.bk
 *.pdb
 
-# ---------- Tauri ----------
+# ---------- Tauri & Releases ----------
 src-tauri/target/
 src-tauri/gen/schemas/
 src-tauri/WixTools/
+release/
 
 # ---------- Test & coverage output ----------
 coverage/

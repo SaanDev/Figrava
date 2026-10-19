@@ -1,65 +1,81 @@
-# Scientific Plot Studio
+<div align="center">
 
-**Scientific Plot Studio** is a cross-platform scientific visualization, curve fitting, and data analysis desktop application built with **Rust**, **Tauri 2**, **React**, and **TypeScript**.
+<img src="./assets/Logo.png" alt="Figrava Logo" width="480" />
 
-## Key Capabilities (v0.1 MVP)
+### Scientific Figures & Data Visualization Desktop Studio
 
-- **Scientific Spreadsheet & Data Workspace (`crates/data-engine`)**:
-  - Import and export CSV, TSV, and whitespace-delimited datasets with automatic delimiter, header, physical unit (`[nm]`, `(uM)`), and column role detection.
-  - Virtualized spreadsheet editor (`@tanstack/react-virtual`) supporting large tables, inline cell editing, column role designations (`X`, `Y`, `XError`, `YError`, `Label`, `None`), sorting, filtering, and derived column mathematical transformations (`Scale + Offset`, `Log10`, `Ln`, `Min-Max Normalize`, `Z-Score`, `First Derivative`, `Cumulative Integral`).
-- **Renderer-Independent 2D Plotting Engine (`crates/plot-model` + Apache ECharts Adapter)**:
-  - Scatter, Line, Line + Symbols, Area, and Bar plots with multi-series overlays and vertical/horizontal error bars.
-  - Linear and logarithmic (`log10`) axes, reversible coordinates, major/minor grids, scientific notation, Okabe-Ito colorblind-safe publication palette, and customizable typography.
-  - Vector **SVG** and high-resolution **PNG** (150 / 300 / 600 DPI) figure export.
-- **Verified Scientific Analysis & Curve Fitting (`crates/analysis-engine`)**:
-  - Descriptive statistics (Mean, Variance, SD, SEM, Quartiles, Median, IQR, Skewness) and Pearson correlation.
-  - Weighted and unweighted Linear Least Squares ($y = m x + c$).
-  - SVD-stabilized, domain-centered Polynomial Least Squares ($y = \sum_{k=0}^d a_k x^k$, degrees 1–8) with exact binomial Jacobian covariance transformation.
-  - Levenberg-Marquardt Nonlinear Least Squares for **Gaussian Peak**, **Lorentzian Peak**, and **Exponential** models with analytical Jacobians, automatic initial parameter estimation, parameter standard errors, 95% confidence intervals, $R^2$, Adjusted $R^2$, RMSE, RSS, Reduced Chi-Square ($\chi^2_\nu$), AIC, condition number diagnostics, and residual plots.
-- **Reproducible Project Persistence (`crates/project-engine`)**:
-  - Versioned `.spsproj` ZIP container format storing manifest, datasets, worksheets, figures, analysis results, and explicit dependency graph (`Dataset → Analysis → PlotLayer`).
-  - Atomic file saving and automatic downstream recalculation when source data cells change.
+[![Release](https://img.shields.io/badge/Release-v1.0.0-blue.svg)](https://github.com/scientific-plot-studio/scientific-plot-studio)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-brightgreen.svg)]()
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](./LICENSE)
 
-## Repository Structure
+**Figrava** is a professional desktop application engineered for scientists, researchers, and engineers to explore complex datasets, perform mathematically rigorous curve fitting and statistical analysis, and generate publication-ready scientific figures.
 
-```text
-scientific-plot-studio/
-├── src/                      # React + TypeScript + Tailwind CSS frontend
-│   ├── components/           # TopMenuToolbar, ProjectExplorer, PropertiesInspector, StatusBar, Modals
-│   ├── features/             # Spreadsheet, Plotting (ECharts adapter), Analysis Report
-│   ├── stores/               # Zustand workspace state store
-│   ├── services/             # Typed Tauri IPC client & browser/test fallback
-│   ├── types/                # TypeScript domain definitions
-│   └── styles/               # Tailwind CSS theme
-├── src-tauri/                # Tauri 2 native desktop shell, commands, and undo/redo state
-├── crates/
-│   ├── scientific-core/      # Entity IDs, error handling, numerical sanitization, DependencyGraph
-│   ├── plot-model/           # Renderer-independent figure and plot layer specification
-│   ├── data-engine/          # Dataset/Worksheet models, CSV/TSV I/O, column transforms
-│   ├── analysis-engine/      # Statistics, OLS/WLS linear, SVD polynomial, LM nonlinear fitting
-│   └── project-engine/       # .spsproj container serialization, atomic save, reactive recalculation
-├── fixtures/                 # Sample scientific CSV/TSV datasets
-└── docs/                     # Technical and mathematical specifications
-```
+</div>
 
-## Quick Start & Quality Checks
+---
 
-### Prerequisites
-- **Rust** (stable toolchain via `rustup`)
-- **Node.js** (v20+) and **npm**
+## 🎯 Purpose
 
-### Commands
-```bash
-# Install frontend dependencies
-npm install
+In modern scientific research, preparing journal-grade figures and performing robust data analysis often requires juggling fragile spreadsheets, proprietary statistical packages, and ad-hoc plotting scripts.
 
-# Run Rust formatting, linting, and numerical/integration test suites
-cargo fmt --check
-cargo clippy --workspace --all-targets -- -D warnings
-cargo test --workspace
+**Figrava** solves this by unifying:
+1. **Interactive Data Exploration**: Fast, responsive spreadsheets tailored for multi-series experimental measurements.
+2. **Mathematical Rigor**: Numerical least-squares regression, analytical Jacobians, and statistical validation without black-box approximations.
+3. **Publication-Standard Graphics**: Pixel-perfect vector and high-DPI raster figure generation meeting the strict standards of peer-reviewed journals (such as *Nature*, *Science*, and *Cell*).
+4. **Reproducible Workflows**: Self-contained project persistence with reactive recalculation, ensuring figures remain continuously synchronized with their underlying data.
 
-# Run TypeScript typechecking, frontend unit tests, and production bundle build
-npm run typecheck
-npm test
-npm run build
-```
+---
+
+## ✨ Key Functions & Capabilities
+
+### 📊 Scientific Data Workspace & Spreadsheet
+- **Smart Data Ingestion**: Import experimental datasets from CSV, TSV, and whitespace-delimited files with automatic delimiter detection, header recognition, and physical unit extraction (e.g., `[nm]`, `(µM)`).
+- **Virtualized High-Capacity Editor**: Smoothly browse and manipulate large multi-column datasets with instantaneous sorting, filtering, and cell editing.
+- **Column Role Management**: Explicitly designate column roles as `X`, `Y`, `X-Error`, `Y-Error`, `Label`, or `None` for intuitive, error-free plotting.
+- **Derived Column Math**: Apply mathematical transformations directly to data columns, including scaling, offsets, logarithmic transforms ($\log_{10}$, $\ln$), min-max normalization, z-score standardization, numerical derivatives, and cumulative numerical integration.
+
+### 📈 Journal-Ready 2D Scientific Plotting
+- **Comprehensive Figure Types**: Scatter charts, connected line graphs, line + symbols, area plots, and bar charts with customizable multi-layer overlays.
+- **Dual Error Bars**: Independent symmetric or asymmetric error bounds for both horizontal ($X$) and vertical ($Y$) axes.
+- **Advanced Coordinate Systems**: Linear and true logarithmic scales, inverted coordinates, customizable axis limits, major and minor grid lines, and scientific notation formatting.
+- **Publication Styling Presets**: Out-of-the-box styling configurations including Nature-style aesthetics, clean minimalist layouts, and Okabe-Ito colorblind-accessible palettes.
+- **High-Fidelity Vector & Bitmap Export**: One-click figure export to scalable vector graphics (**SVG**) and high-resolution raster images (**PNG** at 150, 300, and 600 DPI) ready for camera-ready submission.
+
+### 🔬 Rigorous Curve Fitting & Statistical Analysis
+- **Linear & Polynomial Regression**:
+  - Weighted and unweighted Ordinary Least Squares ($y = mx + c$).
+  - SVD-stabilized, domain-centered Polynomial Least Squares (degrees 1 through 8) with exact covariance transformations.
+- **Nonlinear Model Fitting (Levenberg-Marquardt)**:
+  - Built-in models: **Gaussian Peaks**, **Lorentzian Peaks**, and **Exponential Decay**.
+  - Automated initial parameter estimation and analytical Jacobians for rapid, robust convergence.
+- **Statistical Diagnostics & Confidence Bounds**:
+  - In-depth goodness-of-fit metrics: $R^2$, Adjusted $R^2$, Root Mean Square Error (RMSE), Residual Sum of Squares (RSS), Reduced Chi-Square ($\chi^2_\nu$), and Akaike Information Criterion (AIC).
+  - Parameter standard errors, condition number diagnostics, and 95% confidence intervals.
+  - Real-time residual distribution plots to evaluate model adequacy.
+- **Descriptive Statistics**: Instant calculation of Mean, Variance, Standard Deviation, Standard Error of the Mean (SEM), Median, Interquartile Range (IQR), and Pearson correlation.
+
+### 🔄 Reproducible Project Persistence
+- **Atomic `.spsproj` File Container**: Save your entire study—raw worksheets, transformed columns, plotted layers, fitted models, and figure customizations—into a single, portable, versioned archive.
+- **Reactive Dependency Architecture**: Modify any measurement cell in a source worksheet, and Figrava automatically recalculates all dependent curve fits, statistics, and figure layers in real time.
+
+---
+
+## 👥 Who Figrava is For
+
+- **Academic Researchers & Faculty**: Preparing manuscript figures, supplemental data, and grant proposals.
+- **Graduate Students & Postdocs**: Analyzing lab measurements, fitting calibration curves, and evaluating spectroscopy/chromatography data.
+- **R&D Scientists & Engineers**: Analyzing experimental sensor data, device characterization, and physical testing without cumbersome setup.
+
+---
+
+## 📄 License
+
+Figrava is open-source software licensed under the [GNU General Public License v3.0 (GPLv3)](./LICENSE).
+
+You are free to use, run, study, modify, and redistribute this software for personal, academic, or commercial research. Any distributed modifications or derivative works must also be released under the same GPLv3 terms, ensuring that Figrava remains permanently open, transparent, and reproducible for the global scientific community.
+
+---
+
+<div align="center">
+<sub>Designed for scientific clarity, mathematical accuracy, and publication-ready presentation.</sub>
+</div>

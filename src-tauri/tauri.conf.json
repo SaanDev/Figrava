@@ -27,8 +27,23 @@
     "active": true,
     "targets": "all",
     "icon": [
-      "icons/icon.png",
-      "icons/icon.ico"
-    ]
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.ico",
+      "icons/icon.png"
+    ],
+    "copyright": "Copyright © 2026 Figrava Contributors",
+    "shortDescription": "Figrava — Scientific Figures & Data Visualization",
+    "longDescription": "Cross-platform scientific visualization and data analysis desktop application",
+    "windows": {
+      "nsis": {
+        "installMode": "both",
+        "displayLanguageSelector": false
+      },
+      "wix": {
+        "language": "en-US"
+      }
+    }
   }
 }
