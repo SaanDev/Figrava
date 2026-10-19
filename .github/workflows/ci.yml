@@ -1,0 +1,38 @@
+name: Scientific Plot Studio CI
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Setup Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Install Frontend Dependencies
+        run: npm ci
+
+      - name: Frontend Typecheck, Tests & Production Build
+        run: |
+          npm run typecheck
+          npm test
+          npm run build
+
+      - name: Rust Formatting, Clippy & Workspace Tests
+        run: |
+          cargo fmt --check
+          cargo clippy --workspace --all-targets -- -D warnings
+          cargo test --workspace

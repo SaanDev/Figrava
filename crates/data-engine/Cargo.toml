@@ -1,0 +1,13 @@
+[package]
+name = "data-engine"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+
+[dependencies]
+scientific-core = { path = "../scientific-core" }
+calamine.workspace = true
+csv.workspace = true
+serde.workspace = true
+serde_json.workspace = true

@@ -1,0 +1,25 @@
+[package]
+name = "scientific-plot-studio"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "Scientific Plot Studio — Cross-platform scientific visualization and data analysis desktop application"
+
+[lib]
+name = "scientific_plot_studio_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "=2.7.3", features = [] }
+
+[dependencies]
+scientific-core = { path = "../crates/scientific-core" }
+data-engine = { path = "../crates/data-engine" }
+plot-model = { path = "../crates/plot-model" }
+analysis-engine = { path = "../crates/analysis-engine" }
+project-engine = { path = "../crates/project-engine" }
+tauri = { version = "=2.12.4", features = ["custom-protocol"] }
+rfd = "0.15"
+serde.workspace = true
+serde_json.workspace = true

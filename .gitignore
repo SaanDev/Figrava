@@ -1,0 +1,84 @@
+# ============================================================
+# Figrava v1.0 — Git ignore rules
+# ============================================================
+
+# ---------- Node / npm ----------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+.npm/
+.yarn/
+.eslintcache
+.stylelintcache
+*.tsbuildinfo
+
+# ---------- Vite / frontend build output ----------
+dist/
+dist-ssr/
+.vite/
+*.local
+
+# ---------- Rust / Cargo ----------
+target/
+**/target/
+**/*.rs.bk
+*.pdb
+
+# ---------- Tauri ----------
+src-tauri/target/
+src-tauri/gen/schemas/
+src-tauri/WixTools/
+
+# ---------- Test & coverage output ----------
+coverage/
+.nyc_output/
+*.lcov
+test-results/
+playwright-report/
+.vitest/
+
+# ---------- Environment & secrets ----------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ---------- Logs & temp files ----------
+logs/
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# ---------- Editors / IDEs ----------
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+.fleet/
+
+# ---------- OS files ----------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ---------- Local user project / export files ----------
+# (sample projects in fixtures/ are kept)
+/*.spsproj
+/exports/
