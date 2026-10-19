@@ -5,10 +5,14 @@
   "description": "Figrava v1.0 (Scientific Figures & Data Visualization) — Cross-platform scientific visualization and data analysis desktop application",
   "license": "GPL-3.0-or-later",
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "vite",
     "start": "vite",
     "desktop": "npm run build && cargo run -p scientific-plot-studio",
+    "desktop:dev": "tauri dev",
     "build": "tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
@@ -17,7 +21,7 @@
     "build:setup": "tauri build",
     "build:nsis": "tauri build --bundles nsis",
     "build:msi": "tauri build --bundles msi",
-    "release": "powershell -ExecutionPolicy Bypass -File ./scripts/build-release.ps1"
+    "release": "node ./scripts/build-release.mjs"
   },
   "dependencies": {
     "@tanstack/react-virtual": "^3.13.0",

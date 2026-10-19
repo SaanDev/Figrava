@@ -68,6 +68,36 @@ In modern scientific research, preparing journal-grade figures and performing ro
 
 ---
 
+## Linux desktop development
+
+Figrava's native Linux desktop build uses Tauri 2, GTK 3, and WebKitGTK 4.1.
+Use Node.js 20 or newer. On Debian or Ubuntu, install the system dependencies
+and JavaScript packages:
+
+```sh
+sudo apt update
+sudo apt install build-essential curl file libayatana-appindicator3-dev \
+  librsvg2-dev libssl-dev libwebkit2gtk-4.1-dev libxdo-dev
+npm ci
+```
+
+Start the desktop app with Vite hot reload:
+
+```sh
+npm run desktop:dev
+```
+
+Create a Debian package and its SHA-256 checksum with:
+
+```sh
+npm run release
+```
+
+The package and checksum are written to `release/`. The `npm run desktop`
+command remains available for launching the built frontend directly.
+
+---
+
 ## 📄 License
 
 Figrava is open-source software licensed under the [GNU General Public License v3.0 (GPLv3)](./LICENSE).
